@@ -233,15 +233,97 @@ function repositionBalloon() {
 
 // we need to plug into codeMirror
 var s = code.getScrollerElement();
+var isDecimal = /(\+|\-)?((\d+[\.]\d+)|([\.]\d+)|(\d+[\.])|(\d+))/g;
+var isOperatorChar = /[+\-*&%=<>!?|\/,{}]/;
+
 s.addEventListener('mousedown', function(e) {
 
 	var oldToken = token;
+	token = null;
 
 	cursor = code.coordsChar({x: e.clientX, y: e.clientY});
-	token = code.getTokenAt(cursor);
+	console.log(cursor);
+	// extract the line of the cursor
+	var lineText = code.getLine(cursor.line); 
+	
+	// extract text before and after cursor in the line
+	var beforeCh = lineText.substring(0, cursor.ch);
+	var afterCh = lineText.substring(cursor.ch);
+	
+	// trim the start and the front to the nearest whitespaces
+	var cursorInToken = beforeCh.split('').reverse().join('').search(/\s/);
+	var start = beforeCh.length - cursorInToken;
+	if (start>-1) beforeCh = beforeCh.substring(start, beforeCh.length);
+	var end = afterCh.search(/\s/);
+	if (end>-1) afterCh = afterCh.substring(0, end);
+
+	// combine both ends to give the token around cursor
+	var tokenWord = beforeCh + afterCh;
+	console.log('combined', tokenWord);
+
+	var matchedPosition = -1;
+	var isCursorAtNumber = false;
+
+	var endMatch;
+	var match;
+	
+	while ((match = isDecimal.exec(tokenWord))!= null) {
+
+		console.log('match', match, 'at', match.index);
+		matchedPosition = match.index;
+		endMatch = match[0].length + matchedPosition;
+
+		if ( matchedPosition <= cursorInToken && endMatch >= cursorInToken ) {
+			
+			// really found
+			isCursorAtNumber = true;
+			console.log('we matched', match[0], matchedPosition, endMatch);
+			break;
+
+		}
+
+	}
+
+	// check boundaries
+	if (isCursorAtNumber && matchedPosition>0) {
+
+		if (!isOperatorChar.test(tokenWord[matchedPosition-1])) {
+			
+			isCursorAtNumber = false;
+
+		} else {
+			
+			// This means number is prepended with / * or similar characters.
+
+		}
+
+	}
+
+	if (isCursorAtNumber) {
+		
+
+		var trueMatch = tokenWord.substring(matchedPosition, endMatch);
+		
+
+		token = {
+			className: 'number',
+			start: matchedPosition + cursor.ch - cursorInToken,
+			end: endMatch + cursor.ch - cursorInToken,
+			string: trueMatch
+		};
+
+		console.log('true match', trueMatch);
+		console.log('verify match.', lineText.substring(token.start, token.end) );
+
+		console.log('create token', token);
+		var token2 = code.getTokenAt(cursor);
+		console.log('compare token', token2);
+
+
+	}
 
 	// Activated from Mouse click
-	if (token.className === "number") {
+	if (isCursorAtNumber) {
 		if (isBalloonOpen) {
 			if (oldToken && (oldToken.start==token.start)) {
 				return;
@@ -259,25 +341,9 @@ code.getInputField().addEventListener('keydown', function(e) {
 	deactivateBalloon();
 
 	// Keypresses handling still a little buggy below.
-
 	// var oldToken = token;
-
 	// cursor = code.getCursor();
-	// token = code.getTokenAt(cursor);
 
-	// if (token.className === "number") {
-	// 	if (isBalloonOpen) {
-	// 		if (oldToken && (oldToken.start==token.start)) {
-	// 			return;
-	// 		}
-	// 	}
-	// 	activateBalloon();
-
-	// } else {
-
-	// 	deactivateBalloon();
-
-	// }
 
 });
 
