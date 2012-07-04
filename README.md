@@ -45,9 +45,9 @@ modifications to it as new versions.
 The URL for each effect contains an effect number, a dot, and a version number.  The first version is zero
 for any new or newly-forked effect.  The most recent version can be referenced by leaving the version
 number and the dot off the end of the URL.  For example, my brother's first attempt at GLSL abstract art
-is `<a href="http://glsl.heroku.com/e#375.0">e#375.0</a>`, and after many more saves the final version is
-`<a href="http://glsl.heroku.com/e#375.15">e#375.15</a>`, which can also be written as just
-`<a href="http://glsl.heroku.com/e#375">e#375</a>` because it is the last version.  If you modify and fork
+is <a href="http://glsl.heroku.com/e#375.0">`e#375.0`</a>, and after many more saves the final version is
+<a href="http://glsl.heroku.com/e#375.15">`e#375.15`</a>, which can also be written as just
+<a href="http://glsl.heroku.com/e#375">`e#375`</a> because it is the last version.  If you modify and fork
 this effect, you'll get a new effect number, version zero.
 
 ### `Parent` and `Diff`
