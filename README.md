@@ -32,7 +32,7 @@ the <a href="http://glsl.heroku.com/">online gallery</a>.  Make any changes you 
 you can't overwrite another person's shader by accident.  If you like what you've done, the next button you
 click will be called either `save` or `fork`.
 
-### `Save` vs. `Fork`
+### `Save` vs. `Fork` <img src="http://github.com/emackey/glsl-sandbox/raw/mobile-fixes/docs/SaveVsFork.png" alt="save vs. fork" width="162" height="38" />
 
 Regardless of the label, clicking this button immediately saves your shader into the online gallery to share
 with the world.  If the label reads `fork` it means that you've made modifications to someone else's
