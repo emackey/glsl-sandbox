@@ -27,7 +27,7 @@ $(function () {
                 eleShader = document.createElement('span');
                 //eleShader.className = 'shader';
                 eleShader.innerHTML = '<a class="shader" href="http://glsl.heroku.com/e#' + shader.e +
-                    '"><img src="shader_img/e' + shader.e + '.png" alt="' + shader.name + '" />' + shader.name + '</a> ';
+                    '"><img src="shader_img/e' + shader.e + '.' + shader.ext + '" alt="' + shader.name + '" />' + shader.name + '</a> ';
 
                 eleShaderCollection.appendChild(eleShader);
             }
