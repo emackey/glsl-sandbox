@@ -5,7 +5,15 @@ $(function () {
     var getURL = window.URL || window.webkitURL || window;
 
     function onAddShader () {
-        // TODO: Insert new shader into array.
+        // TODO: Compute array of categories, sanity check and trim URL.
+        var shader = {
+            e : $('#shaderUrl').attr('value'),
+            ext : $('#thumbnailExt').attr('value'),
+            cat : [],
+            name : $('#shaderName').attr('value'),
+            desc : $('#shaderDesc').attr('value')
+        };
+        shader_showcase.shaders.push(shader);
 
         var regex = new RegExp('\}\,', 'gm');
         var msg =
