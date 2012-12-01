@@ -1,5 +1,8 @@
+/*global Blob*/
 $(function () {
     "use strict";
+
+    var getURL = window.URL || window.webkitURL || window;
 
     function onAddShader () {
         // TODO: Insert new shader into array.
@@ -14,6 +17,14 @@ $(function () {
             JSON.stringify(shader_showcase.shaders).replace(regex, '},\n') +
             '\n};\n';
         $('#output').text(msg);
+
+        if (typeof Blob !== 'undefined') {
+            var ele = document.getElementById('downloadLink');
+            var octetBlob = new Blob([ msg ], { 'type' : 'application/octet-stream', 'endings' : 'native' });
+            var octetBlobURL = getURL.createObjectURL(octetBlob);
+            ele.innerHTML = 'Download: <a href="' + octetBlobURL + '" download="featured_shaders.js">featured_shaders.js</a> (with ' +
+                shader_showcase.categories.length + ' categories, ' + shader_showcase.shaders.length + ' shaders)';
+        }
     }
 
     function onResize () {
@@ -21,6 +32,9 @@ $(function () {
     }
     onResize();
     $(window).resize(onResize);
+
+    $('#topRight').html('Loaded:<br/>' + shader_showcase.categories.length + ' categories<br/>' +
+        shader_showcase.shaders.length + ' shaders');
 
     var iCat, lenCat = shader_showcase.categories.length, lenShader = shader_showcase.shaders.length;
     var cat, eleCat, catID;
