@@ -30,8 +30,10 @@ $(function () {
 
         if (valid) {
             $('#computedName').text('shader_img/e' + url + '.');
+            $('#popOut').html('<a target="_blank" href="' + baseEffectURL + url + '">Popout e#' + url + '</a>');
         } else {
             $('#computedName').text('shader_img/e.');
+            $('#popOut').html('');
         }
         $('#go')[0].disabled = !valid;
         currentEisValid = valid;
