@@ -50,6 +50,9 @@ $(function () {
                         var id = parseInt(box.id.substring(9), 10);
                         box.checked = oldShader.cat.indexOf(id) >= 0;
                     });
+                } else if (Math.abs(Math.floor(parseFloat(oldShader.e)) - Math.floor(parseFloat(currentE))) < 0.01) {
+                    $('#popOut').append(' &bull; <a target="shader_sample" href="http://glsl.heroku.com/diff#' +
+                        oldShader.e + '-vs-' + currentE + '">Diff e#' + oldShader.e + '</a>');
                 }
             }
         } else {
