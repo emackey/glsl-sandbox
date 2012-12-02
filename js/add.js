@@ -5,15 +5,28 @@ $(function () {
     var getURL = window.URL || window.webkitURL || window;
 
     function onAddShader () {
-        // TODO: Compute array of categories, sanity check and trim URL.
+        // TODO: Add new category, sanity check and trim URL.
+
+        var categories = [];
+        $.each($('.categoryCheckbox'), function (i, box) {
+            if (box.checked) {
+                categories.push(parseInt(box.id.substring(9), 10));
+                box.checked = false;
+            }
+        });
+
         var shader = {
             e : $('#shaderUrl').attr('value'),
             ext : $('#thumbnailExt').attr('value'),
-            cat : [],
+            cat : categories,
             name : $('#shaderName').attr('value'),
             desc : $('#shaderDesc').attr('value')
         };
         shader_showcase.shaders.push(shader);
+
+        $('#shaderUrl').attr('value', '');
+        $('#shaderName').attr('value', '');
+        $('#shaderDesc').attr('value', '');
 
         var regex = new RegExp('\}\,', 'gm');
         var msg =
@@ -30,7 +43,8 @@ $(function () {
             var ele = document.getElementById('downloadLink');
             var octetBlob = new Blob([ msg ], { 'type' : 'application/octet-stream', 'endings' : 'native' });
             var octetBlobURL = getURL.createObjectURL(octetBlob);
-            ele.innerHTML = 'Download: <a href="' + octetBlobURL + '" download="featured_shaders.js">featured_shaders.js</a> (with ' +
+            ele.innerHTML = 'Download: <a href="' + octetBlobURL +
+                '" download="featured_shaders.js">featured_shaders.js</a> (with ' +
                 shader_showcase.categories.length + ' categories, ' + shader_showcase.shaders.length + ' shaders)';
         }
     }
@@ -52,16 +66,17 @@ $(function () {
         catID = 'category_' + iCat;
         eleCat = document.createElement('div');
         eleCat.className = 'categoryToggle';
-        eleCat.innerHTML = '<input id="' + catID + '" type="checkbox"> <label for="' + catID + '">' + cat.name + '</label>';
+        eleCat.innerHTML = '<input id="' + catID + '" type="checkbox" class="categoryCheckbox"> ' +
+            '<label for="' + catID + '">' + cat.name + '</label>';
         //if (cat.desc) {
 	    //    eleCat.innerHTML += '<span class="description">' + cat.desc + '</span>';
         //}
         $("#categories").append(eleCat);
     }
-    eleCat = document.createElement('div');
-    eleCat.className = 'categoryToggle';
-    eleCat.innerHTML = 'New category: <input id="new_category" type="text">';
-    $("#categories").append(eleCat);
+    //eleCat = document.createElement('div');
+    //eleCat.className = 'categoryToggle';
+    //eleCat.innerHTML = 'New category: <input id="new_category" type="text">';
+    //$("#categories").append(eleCat);
 
     $('#go').click(onAddShader);
 });
