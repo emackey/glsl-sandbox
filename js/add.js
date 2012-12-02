@@ -28,22 +28,22 @@ $(function () {
             }
         }
 
+        $('#go')[0].disabled = !valid;
+        currentEisValid = valid;
+        currentE = url;
+        url = baseEffectURL + url;
         if (valid) {
-            $('#computedName').text('shader_img/e' + url + '.');
-            $('#popOut').html('<a target="_blank" href="' + baseEffectURL + url + '">Popout e#' + url + '</a>');
+            $('#computedName').text('shader_img/e' + currentE + '.');
+            $('#popOut').html('<a target="shader_sample" href="' + url + '">Popout e#' + currentE + '</a>');
+            if ($('#shaderUrl').attr('value') !== url) {
+                $('#shaderUrl').attr('value', url);
+            }
         } else {
             $('#computedName').text('shader_img/e.');
             $('#popOut').html('');
         }
-        $('#go')[0].disabled = !valid;
-        currentEisValid = valid;
-        currentE = url;
-
-        url = baseEffectURL + url;
-        if (valid && $('#shaderUrl').attr('value') !== url) {
-            $('#shaderUrl').attr('value', url);
-        }
     }
+
     $('#shaderUrl').change(onURLchanged).click(function() {
        $(this).select();
     });
@@ -73,6 +73,9 @@ $(function () {
             alert("Please choose at least one category.");
             return;
         }
+        shader_showcase.categories.sort(function (a, b) {
+            return (a.name > b.name) ? 1 : ((a.name < b.name) ? -1 : 0);
+        });
 
         var shader = {
             e : currentE,
@@ -82,6 +85,9 @@ $(function () {
             desc : $('#shaderDesc').attr('value')
         };
         shader_showcase.shaders.push(shader);
+        shader_showcase.shaders.sort(function (a, b) {
+            return parseFloat(a.e) - parseFloat(b.e);
+        });
 
         $('#shaderName').attr('value', '');
         $('#shaderDesc').attr('value', '');
