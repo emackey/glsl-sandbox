@@ -3,9 +3,62 @@ $(function () {
     "use strict";
 
     var getURL = window.URL || window.webkitURL || window;
+    var baseEffectURL = 'http://glsl.heroku.com/e#';
+    var baseEffectURLLen = baseEffectURL.length;
+    var currentE = '', currentEisValid = false;
 
+    // Shader URL change handler & validation
+    //
+    function onURLchanged() {
+        var url = $('#shaderUrl').attr('value').trim();
+        if ((url.length > baseEffectURLLen) && (url.substring(0, baseEffectURLLen) === baseEffectURL)) {
+            url = url.substring(baseEffectURLLen);
+        }
+        var i, len = url.length, valid = (len > 0 && len < 10), hasDot = false;
+        for (i = 0; valid && (i < len); ++i) {
+            var ch = url[i];
+            if (ch === '.') {
+                if (hasDot) {
+                    valid = false;
+                } else {
+                    hasDot = true;
+                }
+            } else if ((ch < '0') || (ch > '9')) {
+                valid = false;
+            }
+        }
+
+        if (valid) {
+            $('#computedName').text('shader_img/e' + url + '.');
+        } else {
+            $('#computedName').text('shader_img/e.');
+        }
+        $('#go')[0].disabled = !valid;
+        currentEisValid = valid;
+        currentE = url;
+
+        url = baseEffectURL + url;
+        if (valid && $('#shaderUrl').attr('value') !== url) {
+            $('#shaderUrl').attr('value', url);
+        }
+    }
+    $('#shaderUrl').change(onURLchanged).click(function() {
+       $(this).select();
+    });
+
+    // "Add Shader" button event
+    //
     function onAddShader () {
-        // TODO: Add new category, sanity check and trim URL.
+        if (!currentEisValid) {
+            alert('Effect URL is invalid.');
+            return;
+        }
+
+        if ($('#shaderName').attr('value').length < 1) {
+            alert("Please enter the shader's name.");
+            return;
+        }
+        // TODO: Add new category
 
         var categories = [];
         $.each($('.categoryCheckbox'), function (i, box) {
@@ -14,9 +67,13 @@ $(function () {
                 box.checked = false;
             }
         });
+        if (categories.length < 1) {
+            alert("Please choose at least one category.");
+            return;
+        }
 
         var shader = {
-            e : $('#shaderUrl').attr('value'),
+            e : currentE,
             ext : $('#thumbnailExt').attr('value'),
             cat : categories,
             name : $('#shaderName').attr('value'),
@@ -24,9 +81,10 @@ $(function () {
         };
         shader_showcase.shaders.push(shader);
 
-        $('#shaderUrl').attr('value', '');
         $('#shaderName').attr('value', '');
         $('#shaderDesc').attr('value', '');
+        $('#shaderUrl').attr('value', baseEffectURL);
+        onURLchanged();
 
         var regex = new RegExp('\}\,', 'gm');
         var msg =
