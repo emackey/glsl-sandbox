@@ -5,7 +5,7 @@ $(function () {
     var getURL = window.URL || window.webkitURL || window;
     var baseEffectURL = 'http://glsl.heroku.com/e#';
     var baseEffectURLLen = baseEffectURL.length;
-    var currentE = '', currentEisValid = false;
+    var currentE = '', currentEisValid = false, currentEshader;
 
     // Shader URL change handler & validation
     //
@@ -28,9 +28,9 @@ $(function () {
             }
         }
 
-        $('#go')[0].disabled = !valid;
-        currentEisValid = valid;
         currentE = url;
+        currentEisValid = valid;
+        currentEshader = undefined;
         url = baseEffectURL + url;
         if (valid) {
             $('#computedName').text('shader_img/e' + currentE + '.');
@@ -38,9 +38,30 @@ $(function () {
             if ($('#shaderUrl').attr('value') !== url) {
                 $('#shaderUrl').attr('value', url);
             }
+            len = shader_showcase.shaders.length;
+            for (i = 0; i < len; ++i) {
+                var oldShader = shader_showcase.shaders[i];
+                if (oldShader.e === currentE) {
+                    currentEshader = oldShader;
+                    $('#shaderName').attr('value', oldShader.name);
+                    $('#shaderDesc').attr('value', oldShader.desc);
+                    $('#thumbnailExt').attr('value', oldShader.ext);
+                    $.each($('.categoryCheckbox'), function (i, box) {
+                        var id = parseInt(box.id.substring(9), 10);
+                        box.checked = oldShader.cat.indexOf(id) >= 0;
+                    });
+                }
+            }
         } else {
             $('#computedName').text('shader_img/e.');
             $('#popOut').html('');
+        }
+        $('#go')[0].disabled = !valid;
+
+        if (typeof currentEshader !== 'undefined') {
+            $('#go').attr('value', 'Modify shader');
+        } else {
+            $('#go').attr('value', 'Add shader');
         }
     }
 
@@ -84,10 +105,18 @@ $(function () {
             name : $('#shaderName').attr('value'),
             desc : $('#shaderDesc').attr('value')
         };
-        shader_showcase.shaders.push(shader);
-        shader_showcase.shaders.sort(function (a, b) {
-            return parseFloat(a.e) - parseFloat(b.e);
-        });
+        if (typeof currentEshader === 'undefined') {
+            shader_showcase.shaders.push(shader);
+            shader_showcase.shaders.sort(function (a, b) {
+                return parseFloat(a.e) - parseFloat(b.e);
+            });
+        } else {
+            currentEshader.e = shader.e;
+            currentEshader.ext = shader.ext;
+            currentEshader.cat = shader.cat;
+            currentEshader.name = shader.name;
+            currentEshader.desc = shader.desc;
+        }
 
         $('#shaderName').attr('value', '');
         $('#shaderDesc').attr('value', '');
@@ -129,7 +158,7 @@ $(function () {
 
     for (iCat = 0; iCat < lenCat; ++iCat) {
         cat = shader_showcase.categories[iCat];
-        catID = 'category_' + iCat;
+        catID = 'category_' + cat.id;
         eleCat = document.createElement('div');
         eleCat.className = 'categoryToggle';
         eleCat.innerHTML = '<input id="' + catID + '" type="checkbox" class="categoryCheckbox"> ' +
