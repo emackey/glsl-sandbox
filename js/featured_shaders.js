@@ -19,7 +19,10 @@ var shader_showcase = {
 {"e":"97.0","ext":"png","cat":[8],"name":"Sea Noise","desc":"By @paulofalcao"},
 {"e":"207.3","ext":"png","cat":[2],"name":"Conway's Game of Life","desc":"The classic game plays out in the backbuffer texture, using blue trails to highlight activity."},
 {"e":"355.0","ext":"png","cat":[8],"name":"Marble floor with balls","desc":"By @paulofalcao"},
+{"e":"380.0","ext":"png","cat":[1],"name":"Blobs","desc":"By @paulofalcao.  This shader is the ancestor of a large number of blob-type gradient shaders."},
 {"e":"383.7","ext":"png","cat":[2],"name":"Al's Bugs","desc":"Bugs (in green) hunt for food (in blue)."},
+{"e":"395.0","ext":"png","cat":[1],"name":"Fire blobs","desc":""},
+{"e":"424.12","ext":"png","cat":[6],"name":"Shader Invaders","desc":""},
 {"e":"677.0","ext":"png","cat":[3],"name":"Gems","desc":""},
 {"e":"1621.1","ext":"png","cat":[6],"name":"Half-a-Q*bert in GLSL","desc":"Q*bert will follow the mouse.\nJumping off the board will simply move you back to the top.\nThere's no win condition, but you can toggle each tile twice."},
 {"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cube thing","desc":"by gngbng.\nThis is mostly just a terrible mishmash of stolen code."}]
