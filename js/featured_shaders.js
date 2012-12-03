@@ -2,7 +2,7 @@ var shader_showcase = {
 
 "categories":
 [{"id":1,"name":"Art &amp; Abstract","img":"","desc":""},
-{"id":2,"name":"Automata","img":"","desc":"http://en.wikipedia.org/wiki/Automata_theory"},
+{"id":2,"name":"Automata","img":"","desc":"<a target=\"_blank\" href=\"http://en.wikipedia.org/wiki/Automata_theory\">Automata Theory</a> is the study of abstract machines and the computational problems that can be solved using them."},
 {"id":3,"name":"Cellular","img":"","desc":""},
 {"id":4,"name":"Flags","img":"","desc":""},
 {"id":5,"name":"Fractals","img":"","desc":""},

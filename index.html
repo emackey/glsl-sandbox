@@ -10,41 +10,65 @@
     <script type="text/javascript" src="js/main.js"></script>
     <style type="text/css">
 body {
-	background-color: #333;
-	font: 14px Tahoma, Arial, Helvetica, sans-serif;
-	color: #888;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
+    background-color: #000;
+    font: 14px Tahoma, Arial, Helvetica, sans-serif;
+    color: #888;
+    margin: 0 1em 1em;
+    padding: 0;
 }
 h1 {
-	font-weight: normal;
-	margin: 0.2em 0;
-	text-align: center;
-}
-h2 {
-	margin: 0.5em 0 0.1em;
-}
-.main {
-    background: rgba(0, 0, 0, 0.9);
+    background: #222;
+    font-size: 2em;
+    font-weight: normal;
+    margin: 0.2em auto;
+    padding: 2px;
+    text-align: center;
     max-width: 800px;
-    height: 100%;
-    margin: 0 auto;
+    border-radius: 8px;
+    color: #829DB3;
+    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
+    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
+}
+h2, h3 {
+    background: #222;
+    margin: 0.5em auto 0.1em;
+    padding: 2px;
+    font-size: 1.5em;
+    font-weight: normal;
+    text-align: center;
+    width: 80%;
+    border-radius: 8px;
+    color: #829DB3;
+    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
+    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
+}
+p {
+    max-width: 800px;
+    margin: 10px auto;
     padding: 10px 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 a, a:visited {
-	color: #aaa;
-	text-decoration: none;
-	border-bottom: 1px solid #444;
+    color: #aaa;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
 }
 h1 a, h1 a:visited {
-	color: #009DE9;
+    color: #009DE9;
 }
 a:focus, a:hover {
-	color: #009DE9;
-	border-bottom: 1px solid #009DE9;
+    color: #009DE9;
+    border-bottom: 1px solid #009DE9;
+}
+.collection {
+    text-align: center;
 }
 .shader {
     display: inline-block;
@@ -61,9 +85,8 @@ a:focus, a:hover {
     border: none;
     display: block;
 }
-	</style>
+    </style>
 </head><body>
-<div class="main"><div>
 <h1>GLSL Sandbox - Featured Shaders</h1>
 
 <p>The <a href="http://glsl.heroku.com/">GLSL Sandbox Gallery</a> has grown to several thousand shaders,
@@ -74,6 +97,5 @@ I'm certain I have missed plenty of great ones, so drop me a line on Twitter as
 
 <div id="categories"></div>
 
-</div></div>
 </body>
 </html>

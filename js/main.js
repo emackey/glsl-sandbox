@@ -16,7 +16,7 @@ $(function () {
         eleCat.className = 'category';
         eleCat.innerHTML = '<h2>' + cat.name + '</h2>';
         if (cat.desc) {
-	        eleCat.innerHTML += '<span class="description">' + cat.desc + '</span>';
+	        eleCat.innerHTML += '<p>' + cat.desc + '</p>';
         }
         eleShaderCollection = document.createElement('div');
         eleShaderCollection.className = 'collection';
