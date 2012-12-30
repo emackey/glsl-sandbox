@@ -17,7 +17,7 @@ var shader_showcase = {
 {"id":12,"name":"Volumetric","img":"","desc":""}],
 
 "shaders":
-[{"e":"91.27","ext":"png","cat":[6],"name":"Carry the Torch","desc":"Likely the first playable game on GLSL Sandbox.\n\nMove your mouse to the yellow start post at the bottom-right.  Get the green flame and carry it slowly and safely to the purple goal post in the upper-right.  If the screen turns blue, you win!!\n"},
+[{"e":"91.27","ext":"png","cat":[6],"name":"Carry the Torch","desc":"Believed to be the first playable game on GLSL Sandbox.\n\nMove your mouse to the yellow start post at the bottom-right.  Get the green flame and carry it slowly and safely to the purple goal post in the upper-right.  If the screen turns blue, you win!!\n"},
 {"e":"97.0","ext":"png","cat":[8],"name":"Sea Noise","desc":"By @paulofalcao"},
 {"e":"207.3","ext":"png","cat":[2],"name":"Conway's Game of Life","desc":"The classic game plays out in the backbuffer texture, using blue trails to highlight activity."},
 {"e":"355.0","ext":"png","cat":[8],"name":"Marble floor with balls","desc":"By @paulofalcao"},
@@ -35,6 +35,6 @@ var shader_showcase = {
 {"e":"2533.23","ext":"png","cat":[9],"name":"Terrain","desc":""},
 {"e":"2755.0","ext":"png","cat":[1],"name":"Laser Lights","desc":""},
 {"e":"3142.1","ext":"png","cat":[8,9],"name":"Sand Dunes","desc":""},
-{"e":"3530.7","ext":"png","cat":[5,8],"name":"Fractal Spheretracer","desc":"Simple spheretracer by Kabuto\n\nSpheretracing basically starts by placing a sphere at the center of the coordinate system, and then repeatedly increasing the number of spheres by mirroring the spheres across an arbitrarily defined plane.\n\nOf course the number isn't really always doubled since spheres can also get lost if they were on the wrong side of the mirroring plane (since it mirrors one side onto the other one and overwrites what was left there before).\n\nA huge advantage of this process is that it's very easy to raymarch the result. The distance formula never gets a value that's too high.\n"},
-{"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cube thing","desc":"by gngbng.\nThis is mostly just a terrible mishmash of stolen code."}]
+{"e":"3530.7","ext":"png","cat":[5,8],"name":"Fractal Spheretracer","desc":"by Kabuto\n\nSpheretracing basically starts by placing a sphere at the center of the coordinate system, and then repeatedly increasing the number of spheres by mirroring the spheres across an arbitrarily defined plane.\n\nOf course the number isn't really always doubled since spheres can also get lost if they were on the wrong side of the mirroring plane (since it mirrors one side onto the other one and overwrites what was left there before).\n\nA huge advantage of this process is that it's very easy to raymarch the result. The distance formula never gets a value that's too high.\n"},
+{"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cubes","desc":"by gngbng."}]
 };
