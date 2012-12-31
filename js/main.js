@@ -14,7 +14,7 @@ $(function () {
     }
 
     var iCat, lenCat = shader_showcase.categories.length, iShader, lenShader = shader_showcase.shaders.length;
-    var cat, shader, eleCat, eleShader, eleShaderCollection;
+    var cat, shader, eleCat, eleShader, eleShaderCollection, hasShaders;
 
     for (iCat = 0; iCat < lenCat; ++iCat) {
         cat = shader_showcase.categories[iCat];
@@ -27,22 +27,25 @@ $(function () {
         eleShaderCollection = document.createElement('div');
         eleShaderCollection.className = 'collection';
         eleCat.appendChild(eleShaderCollection);
+        hasShaders = false;
         for (iShader = 0; iShader < lenShader; ++iShader) {
             shader = shader_showcase.shaders[iShader];
-            var title = shader.name;
-            if (shader.desc) {
-                title += '\n' + shader.desc;
-            }
             if ($.inArray(cat.id, shader.cat) >= 0) {
+                hasShaders = true;
+                var title = shader.name;
+                if (shader.desc) {
+                    title += '\n' + shader.desc;
+                }
                 eleShader = document.createElement('span');
-                //eleShader.className = 'shader';
                 eleShader.innerHTML = '<a class="shader" title="' + encodeHTML(title) + '" href="http://glsl.heroku.com/e#' + shader.e +
                     '"><img src="shader_img/e' + shader.e + '.' + shader.ext + '" />' + encodeHTML(shader.name) + '</a> ';
 
                 eleShaderCollection.appendChild(eleShader);
             }
         }
-        $("#categories").append(eleCat);
+        if (hasShaders) {
+            $("#categories").append(eleCat);
+        }
     }
 
 });
