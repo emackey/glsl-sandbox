@@ -47,7 +47,14 @@ var shader_showcase = {
 {"e":"2531.5","ext":"png","cat":[1],"name":"Mouse-controlled Fire","desc":"Trying to make the rendermonkey fire fully procedural, just starting out learning about glsl."},
 {"e":"2533.23","ext":"png","cat":[9],"name":"Terrain","desc":""},
 {"e":"2755.0","ext":"png","cat":[1],"name":"Laser Lights","desc":""},
+{"e":"3020.0","ext":"png","cat":[1],"name":"Curls","desc":""},
 {"e":"3142.1","ext":"png","cat":[8,9],"name":"Sand Dunes","desc":""},
 {"e":"3530.7","ext":"png","cat":[5,8],"name":"Fractal Spheretracer","desc":"by Kabuto\n\nSpheretracing basically starts by placing a sphere at the center of the coordinate system, and then repeatedly increasing the number of spheres by mirroring the spheres across an arbitrarily defined plane.\n\nOf course the number isn't really always doubled since spheres can also get lost if they were on the wrong side of the mirroring plane (since it mirrors one side onto the other one and overwrites what was left there before).\n\nA huge advantage of this process is that it's very easy to raymarch the result. The distance formula never gets a value that's too high.\n"},
-{"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cubes","desc":"by gngbng."}]
+{"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cubes","desc":"by gngbng."},
+{"e":"8198.0","ext":"png","cat":[8],"name":"Alien Tunnel","desc":""},
+{"e":"9474.0","ext":"png","cat":[9],"name":"Mountains","desc":"Mountains. (C) David Hoskins - 2013\nhttps://www.shadertoy.com/view/4slGD4\n"},
+{"e":"9892.0","ext":"png","cat":[1],"name":"The Machine","desc":"by srtuss, 2013\na little expression of my love for complex machines and stuff\nwas going for some cartoonish 2d look\nstill could need some optimisation\n"},
+{"e":"9983.0","ext":"png","cat":[10],"name":"Quick Brown Fox","desc":""},
+{"e":"10024.0","ext":"png","cat":[1],"name":"Substrate","desc":"https://twitter.com/tdhooper\ninspired by http://www.fabianoefner.com/64838/556924/projects/millefiori\n"},
+{"e":"10101.1","ext":"png","cat":[13],"name":"The Cornell Box","desc":"@h3r3 - http://www.postronic.org/h3/pid69.html\n\nReproducing the famous Cornell Box through Raymarching, fake soft-shadows, fake indirect lighting, ambiend occlusion and antialiasing.\n\nReference data: http://www.graphics.cornell.edu/online/box/\nReference image: http://www.graphics.cornell.edu/online/box/box.jpg\n\nAvailable also on Shadertoy: https://www.shadertoy.com/view/4ssGzS\n"}]
 };
