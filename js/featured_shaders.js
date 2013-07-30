@@ -50,6 +50,7 @@ var shader_showcase = {
 {"e":"2902.4","ext":"png","cat":[12],"name":"Blue Flame","desc":"too many damn distance fields on glsl sandbox,\nhow about some volume rendering?!\n@simesgreen\n"},
 {"e":"3020.0","ext":"png","cat":[1],"name":"Curls","desc":""},
 {"e":"3142.1","ext":"png","cat":[8,9],"name":"Sand Dunes","desc":""},
+{"e":"3385.0","ext":"png","cat":[8],"name":"Lots of Meteors","desc":"By Kabuto.  A generous helping of meteors, with a generous helping of comments on the raymarching code."},
 {"e":"3530.7","ext":"png","cat":[5,8],"name":"Fractal Spheretracer","desc":"by Kabuto\n\nSpheretracing basically starts by placing a sphere at the center of the coordinate system, and then repeatedly increasing the number of spheres by mirroring the spheres across an arbitrarily defined plane.\n\nOf course the number isn't really always doubled since spheres can also get lost if they were on the wrong side of the mirroring plane (since it mirrors one side onto the other one and overwrites what was left there before).\n\nA huge advantage of this process is that it's very easy to raymarch the result. The distance formula never gets a value that's too high.\n"},
 {"e":"3780.3","ext":"png","cat":[8],"name":"Stripey cubes","desc":"by gngbng."},
 {"e":"8198.0","ext":"png","cat":[8],"name":"Alien Tunnel","desc":""},
