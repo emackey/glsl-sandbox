@@ -1,0 +1,141 @@
+body {
+    background-color: #000;
+    font: 14px Tahoma, Arial, Helvetica, sans-serif;
+    color: #888;
+    margin: 0 1em 1em;
+    padding: 0;
+    position: relative;  /* for scrollspy */
+}
+h1 {
+    background: #222;
+    font-size: 2em;
+    font-weight: normal;
+    margin: 0.2em auto;
+    padding: 2px;
+    text-align: center;
+    border-radius: 8px;
+    color: #829DB3;
+    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
+    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
+}
+h2, h3 {
+    background: #222;
+    margin: 0.5em auto 0.1em;
+    padding: 2px;
+    font-size: 1.5em;
+    font-weight: normal;
+    text-align: center;
+    border-radius: 8px;
+    color: #829DB3;
+    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
+    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
+}
+a, a:visited {
+    color: #aaa;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    white-space: nowrap;
+}
+h1 a, h1 a:visited {
+    color: #009DE9;
+}
+a:focus, a:hover {
+    color: #009DE9;
+    border-bottom: 1px solid #009DE9;
+}
+.collection {
+    text-align: center;
+}
+.shader {
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    background: #1e1e1e;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.shader:hover {
+    box-shadow: 0 0 10px #fff;
+}
+.shader img {
+    border: none;
+    display: block;
+}
+
+
+/* Affix CSS */
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar.affix {
+    position: static;
+}
+.bs-sidebar a {
+    border: none;
+}
+.bs-sidebar li {
+    border-radius: 5px;
+    overflow: hidden;
+}
+.bs-sidebar .active {
+    background: rgba(44,64,81,0.7);
+}
+.bs-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+
+    /* Widen the fixed sidebar */
+    .bs-sidebar.affix,
+    .bs-sidebar.affix-bottom {
+        width: 213px;
+    }
+
+    .bs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile-first approach */
+        top: 80px;
+    }
+
+    .bs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile-first approach */
+    }
+
+    .bs-sidebar.affix-bottom .bs-sidenav,
+    .bs-sidebar.affix .bs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .bs-header h1,
+    .bs-header p {
+        margin-right: 380px;
+    }
+
+    .carbonad {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        padding: 15px !important;
+        width: 330px !important;
+        min-height: 132px;
+    }
+}
+
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+
+    /* Widen the fixed sidebar again */
+    .bs-sidebar.affix-bottom,
+    .bs-sidebar.affix {
+        width: 270px;
+    }
+}

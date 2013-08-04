@@ -15,12 +15,13 @@ $(function () {
 
     var iCat, lenCat = shader_showcase.categories.length, iShader, lenShader = shader_showcase.shaders.length;
     var cat, shader, eleCat, eleShader, eleShaderCollection, hasShaders;
+    var $sideNav = $('.bs-sidenav'), activeCat = ' class="active"';
 
     for (iCat = 0; iCat < lenCat; ++iCat) {
         cat = shader_showcase.categories[iCat];
         eleCat = document.createElement('div');
         eleCat.className = 'category';
-        eleCat.innerHTML = '<h2>' + cat.name + '</h2>';
+        eleCat.innerHTML = '<h2 id="cat' + iCat + '">' + cat.name + '</h2>';
         if (cat.desc) {
 	        eleCat.innerHTML += '<p>' + cat.desc + '</p>';
         }
@@ -45,7 +46,46 @@ $(function () {
         }
         if (hasShaders) {
             $("#categories").append(eleCat);
+            $sideNav.append('<li' + activeCat + '><a href="#cat' + iCat + '">' + cat.name + '</a></li>');
+            activeCat = '';
         }
     }
+
+    // Bootstrap stuff
+
+    var $window = $(window);
+    var $body = $(document.body);
+
+    $body.scrollspy({
+        target: '.bs-sidebar',
+        offset: 0
+    });
+
+    $body.on('click', '.bs-sidenav [href^=#]', function (e) {
+        var $target = $(this.getAttribute('href'));
+
+        e.preventDefault(); // prevent browser scroll
+
+        $window.scrollTop($target.offset().top - 5);
+    });
+
+    // back to top
+    setTimeout(function () {
+        var $sideBar = $('.bs-sidebar');
+
+        $sideBar.affix({
+            offset: {
+                top: function () {
+                    var offsetTop = $sideBar.offset().top;
+                    var sideBarMargin = parseInt($sideBar.children(0).css('margin-top'), 10);
+
+                    return (this.top = offsetTop - sideBarMargin);
+                },
+                bottom: function () {
+                    return (this.bottom = $('.bs-footer').outerHeight(true));
+                }
+            }
+        });
+    }, 100);
 
 });
