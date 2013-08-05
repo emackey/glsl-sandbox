@@ -7,36 +7,25 @@ body {
     position: relative;  /* for scrollspy */
 }
 h1 {
-    background: #222;
+    background: rgba(44,64,81,0.7);
     font-size: 2em;
     font-weight: normal;
-    margin: 0.2em auto;
+    margin: 0.5em auto;
     padding: 2px;
     text-align: center;
     border-radius: 8px;
-    color: #829DB3;
-    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
-    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
 }
 h2, h3 {
-    background: #222;
-    margin: 0.5em auto 0.1em;
+    background: rgba(44,64,81,0.7);
+    margin: 2em auto 0.2em;
     padding: 2px;
     font-size: 1.5em;
     font-weight: normal;
     text-align: center;
     border-radius: 8px;
-    color: #829DB3;
-    /* http://www.colorzilla.com/gradient-editor/#0a3556+0,0f3351+50,0d3354+51,2c4051+100&0.7+0,0.7+100;Custom */
-    background: -moz-linear-gradient(top, rgba(10,53,86,0.7) 0%, rgba(15,51,81,0.7) 50%, rgba(13,51,84,0.7) 51%, rgba(44,64,81,0.7) 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(10,53,86,0.7) 0%,rgba(15,51,81,0.7) 50%,rgba(13,51,84,0.7) 51%,rgba(44,64,81,0.7) 100%); /* W3C */
+}
+.scrollTarget {
+    overflow: hidden;
 }
 a, a:visited {
     color: #aaa;
@@ -69,6 +58,12 @@ a:focus, a:hover {
     border: none;
     display: block;
 }
+.categories-container {
+    margin-top: 10px;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: rgba(44,64,81,1);
+}
 
 
 /* Affix CSS */
@@ -87,7 +82,7 @@ a:focus, a:hover {
     background: rgba(44,64,81,0.7);
 }
 .bs-footer {
-    margin-top: 40px;
+    margin: 40px 0 99%;
     text-align: center;
 }
 
@@ -100,6 +95,10 @@ a:focus, a:hover {
         width: 213px;
     }
 
+    .bs-sidebar.affix-top {
+        position: relative;
+        top: 80px;
+    }
     .bs-sidebar.affix {
         position: fixed; /* Undo the static from mobile-first approach */
         top: 80px;

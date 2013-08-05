@@ -15,13 +15,13 @@ $(function () {
 
     var iCat, lenCat = shader_showcase.categories.length, iShader, lenShader = shader_showcase.shaders.length;
     var cat, shader, eleCat, eleShader, eleShaderCollection, hasShaders;
-    var $sideNav = $('.bs-sidenav'), activeCat = ' class="active"';
+    var $sideNav = $('.bs-sidenav');
 
     for (iCat = 0; iCat < lenCat; ++iCat) {
         cat = shader_showcase.categories[iCat];
         eleCat = document.createElement('div');
         eleCat.className = 'category';
-        eleCat.innerHTML = '<h2 id="cat' + iCat + '">' + cat.name + '</h2>';
+        eleCat.innerHTML = '<div id="cat' + iCat + '" class="scrollTarget"><h2>' + cat.name + '</h2></div>';
         if (cat.desc) {
 	        eleCat.innerHTML += '<p>' + cat.desc + '</p>';
         }
@@ -39,15 +39,14 @@ $(function () {
                 }
                 eleShader = document.createElement('span');
                 eleShader.innerHTML = '<a class="shader" title="' + encodeHTML(title) + '" href="http://glsl.heroku.com/e#' + shader.e +
-                    '"><img src="shader_img/e' + shader.e + '.' + shader.ext + '" />' + encodeHTML(shader.name) + '</a> ';
+                    '"><img src="shader_img/e' + shader.e + '.' + shader.ext + '" width="200" height="100" alt="" />' + encodeHTML(shader.name) + '</a> ';
 
                 eleShaderCollection.appendChild(eleShader);
             }
         }
         if (hasShaders) {
             $("#categories").append(eleCat);
-            $sideNav.append('<li' + activeCat + '><a href="#cat' + iCat + '">' + cat.name + '</a></li>');
-            activeCat = '';
+            $sideNav.append('<li><a href="#cat' + iCat + '">' + cat.name + '</a></li>');
         }
     }
 
@@ -66,7 +65,11 @@ $(function () {
 
         e.preventDefault(); // prevent browser scroll
 
-        $window.scrollTop($target.offset().top - 5);
+        var targetTop = $target.offset().top + 25;
+        $body.animate({ scrollTop: targetTop }, 250, 'swing', function () {
+            // for Firefox
+            $window.scrollTop($target.offset().top + 25);
+        });
     });
 
     // back to top
@@ -82,7 +85,8 @@ $(function () {
                     return (this.top = offsetTop - sideBarMargin);
                 },
                 bottom: function () {
-                    return (this.bottom = $('.bs-footer').outerHeight(true));
+                    //return (this.bottom = $('.bs-footer').outerHeight(true));
+                    return 0;
                 }
             }
         });
