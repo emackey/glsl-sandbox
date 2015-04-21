@@ -37,7 +37,7 @@ $(function () {
                     title += '\n' + shader.desc;
                 }
                 eleShader = document.createElement('span');
-                eleShader.innerHTML = '<a class="shader" title="' + encodeHTML(title) + '" href="http://glsl.heroku.com/e#' + shader.e +
+                eleShader.innerHTML = '<a class="shader" title="' + encodeHTML(title) + '" href="http://glslsandbox.com/e#' + shader.e +
                     '"><img src="shader_img/e' + shader.e + '.' + shader.ext + '" />' + encodeHTML(shader.name) + '</a> ';
 
                 eleShaderCollection.appendChild(eleShader);

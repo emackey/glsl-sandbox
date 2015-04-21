@@ -3,7 +3,7 @@ $(function () {
     "use strict";
 
     var getURL = window.URL || window.webkitURL || window;
-    var baseEffectURL = 'http://glsl.heroku.com/e#';
+    var baseEffectURL = 'http://glslsandbox.com/e#';
     var baseEffectURLLen = baseEffectURL.length;
     var currentE = '', currentEisValid = false, currentEshader;
 
@@ -51,7 +51,7 @@ $(function () {
                         box.checked = oldShader.cat.indexOf(id) >= 0;
                     });
                 } else if (Math.abs(Math.floor(parseFloat(oldShader.e)) - Math.floor(parseFloat(currentE))) < 0.01) {
-                    $('#popOut').append(' &bull; <a target="shader_sample" href="http://glsl.heroku.com/diff#' +
+                    $('#popOut').append(' &bull; <a target="shader_sample" href="http://glslsandbox.com/diff#' +
                         oldShader.e + '-vs-' + currentE + '">Diff e#' + oldShader.e + '</a>');
                 }
             }
